@@ -61,7 +61,7 @@ export default function Authentication() {
         } catch (err) {
 
             console.log(err);
-            let message = (err.response.message);
+            let message = (err.response.dat.message);
             setError(message);
         }
     }
@@ -77,7 +77,7 @@ export default function Authentication() {
                     sm={4}
                     md={7}
                     sx={{
-                        backgroundImage: `url(https://source.unsplash.com/random)`,
+                        backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
                         backgroundRepeat: 'no-repeat',
                         backgroundColor: (t) =>
                             t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],

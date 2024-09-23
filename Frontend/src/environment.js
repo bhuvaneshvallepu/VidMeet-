@@ -1,11 +1,8 @@
-
-let IS_PROD=true;
-
-
+let IS_PROD = true;
 const server = IS_PROD ?
-"https://https://vidmeet-backend-w5al.onrender.com":
+    "https://apnacollegebackend.onrender.com" :
 
     "http://localhost:8000"
-    
+
 
 export default server;

@@ -2,7 +2,6 @@ import axios from "axios";
 import httpStatus from "http-status";
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import server from "../environment";
 
 
@@ -43,21 +42,20 @@ export const AuthProvider = ({ children }) => {
     const handleLogin = async (username, password) => {
         try {
             let request = await client.post("/login", {
-                username: username,
-                password: password
+                username,
+                password
             });
-
-            console.log(username, password)
-            console.log(request.data)
-
+    
+            console.log("Login response:", request.data); // Log the full response
+    
             if (request.status === httpStatus.OK) {
                 localStorage.setItem("token", request.data.token);
-                router("/home")
+                router("/home");
             }
         } catch (err) {
-            throw err;
+            console.error("Login error:", err.response ? err.response.data : err); // Log errors
         }
-    }
+    };
 
     const getHistoryOfUser = async () => {
         try {
@@ -66,10 +64,10 @@ export const AuthProvider = ({ children }) => {
                     token: localStorage.getItem("token")
                 }
             });
-            return request.data
+            console.log(request.data)
         } catch
          (err) {
-            throw err;
+           throw err
         }
     }
 
